@@ -23,6 +23,10 @@ Necesitaremos ...
 
 ![](./figures/overall_coink.png){width=70%}
 
+---
+
+![](./figures/coink_build_inside.jpg){width=80%}
+
 
 La serpiente :snake:
 ====================
@@ -30,7 +34,17 @@ La serpiente :snake:
 Micropython
 -----------
 
+![](./figures/micropython-logo.svg){width=40%}
+
+
+NodeMCU
+-------
+
 ![](./figures/nodemcu.jpg)
+
+---
+
+![](./figures/nodemcu_pinmap.png)
 
 
 I2C (comunicación sensor-micro)
@@ -47,16 +61,53 @@ print(devices)
 WiFi (comunicación micro-PC)
 ----------------------------
 
-¿Esto es python o C?
---------------------
+Captura de datos del sensor
+---------------------------
+
+- tiempo total 1 segundo de datos
+- 1000 lecturas por segundo
+- sensor 3D con dimensiones x, y, z y tiempo
+
+Manejo eficiente de memoria -> buffers + 'array'
+------------------------------------------------
+
+```python
+
+x_array = array.array('h', (0 for i in range(num_measures)))
+```
+[https://docs.micropython.org/array](https://docs.micropython.org/en/latest/library/array.html#module-array)
+
+
+Memoria vs tiempo de ejecución
+------------------------------
+
+```python
+def read_coin(self):
+        '''
+        Read magnetic sensor values and save on RAM (arrays)
+        '''
+def save_readings(self):
+        '''
+        Save magnetic sensor values from RAM to a file
+        '''
+```
+
+Buffer circular, la solución definitiva
+---------------------------------------
 
 ```python
 ring = array.array('h', (0 for i in range(4 * num_measures)))
-position = i * 4
-ring[position] = time.ticks_us() % 65536
-ring[position + 1] = x
-ring[position + 2] = y
-ring[position + 3] = z
+
+def loop(self):
+        ....
+        position = i * 4
+        ring[position] = time.ticks_us() % 65536
+        ring[position + 1] = x
+        ring[position + 2] = y
+        ring[position + 3] = z
+        .....
+        urequests.post(url, data=bytearray(ring))
+
 ```
 
 Analizando monedas
