@@ -1,9 +1,9 @@
-% La serpiente y el cerdo :snake: :pig:
+% La serpiente y el cerdito :snake: :pig:
 % Clara Casas Castedo & Miguel Sánchez de León Peque
-% 2017-11-23
+% 2019-01-17
 
-El cerdo :pig:
-==============
+El cerdito :pig:
+================
 
 Coink
 -----
