@@ -221,6 +221,7 @@ Fuentes
 - Código: [github.com/CojoCompany/coink](https://github.com/CojoCompany/coink/)
 - Documentación:
 [coink.readthedocs.io](https://coink.readthedocs.io/)
+- Presentación: [cojocompany.github.io/PythonVigo-2019-Coink/](https://cojocompany.github.io/PythonVigo-2019-Coink/)
 
 ¿Preguntas? :blush:
 -----------
