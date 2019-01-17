@@ -8,7 +8,7 @@ El cerdito :pig:
 Coink
 -----
 
-<video src="./videos/coink.gif" controls muted>
+<video src="./videos/coink.mp4" controls muted>
 </video>
 
 -------
